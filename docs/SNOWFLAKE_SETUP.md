@@ -15,6 +15,12 @@ It creates:
 - `INTERMEDIATE`
 - `MARTS`
 
+After creating the database, warehouse, and schemas, run:
+
+```sql
+-- Run setup/raw_tables.sql to create the required raw tables
+```
+
 ## 2. Load Inside Airbnb Files
 
 Download the data from:
