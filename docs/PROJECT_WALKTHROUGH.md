@@ -57,7 +57,13 @@ estimated_unavailable_revenue = daily_price when listing is unavailable, otherwi
 
 Inside Airbnb does not provide confirmed booking transactions, so unavailable-night revenue is an estimate and should be labeled that way.
 
-## 5. Build Analytics Marts
+## 5. Incremental Model Behavior
+
+The incremental model demonstrates Snowflake merge/upsert behavior. In this classroom version, the model does not filter the source scan because Inside Airbnb publishes full dataset snapshots where prices and availability can change across many dates.
+
+
+
+## 6. Build Analytics Marts
 
 The mart models are located in `models/marts/`.
 
@@ -70,7 +76,7 @@ They are the final tables analysts would use:
 - `agg_listing_monthly_performance`
 - `agg_neighbourhood_monthly_performance`
 
-## 6. Test the Project
+## 7. Test the Project
 
 Run:
 
@@ -84,7 +90,7 @@ The project tests:
 - Non-null IDs
 - Valid relationships between calendar, reviews, and listings
 
-## 7. Generate Documentation
+## 8. Generate Documentation
 
 Run:
 
