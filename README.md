@@ -125,9 +125,7 @@ streamlit run dashboard/streamlit_app.py
 `fct_listing_calendar` is configured as an incremental model because the Inside Airbnb calendar table can be large.
 
 When loading a new Inside Airbnb dataset snapshot, run:
-
-```powershell
-dbt run --full-refresh --select fct_listing_calendar --profiles-dir .
+`dbt run --full-refresh --select fct_listing_calendar --profiles-dir .`
 
 
 ## Example Business Questions
