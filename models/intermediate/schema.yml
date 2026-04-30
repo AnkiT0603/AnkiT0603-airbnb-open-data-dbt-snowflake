@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_listing_daily_availability
+    description: Listing calendar records enriched with listing attributes and estimated unavailable-night revenue.
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+      - name: calendar_date
+        tests:
+          - not_null
+
+  - name: int_listing_review_metrics
+    description: Review metrics aggregated to listing level.
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+          - unique
