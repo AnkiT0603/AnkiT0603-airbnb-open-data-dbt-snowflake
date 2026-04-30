@@ -113,7 +113,8 @@ Final models include:
 - `agg_listing_monthly_performance`
 - `agg_neighbourhood_monthly_performance`
 
-The `fct_listing_calendar` model is incremental. On later runs, dbt only rebuilds recent calendar data instead of recreating the whole table.
+The `fct_listing_calendar` model is incremental. In this classroom version, it demonstrates Snowflake merge and upsert behavior using `listing_id` and `calendar_date` as the unique key, while still scanning the full source snapshot because Inside Airbnb data can change across many dates.
+
 
 ## Business Metrics
 
