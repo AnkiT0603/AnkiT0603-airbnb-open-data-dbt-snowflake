@@ -101,10 +101,17 @@ Run the project:
 ```powershell
 dbt debug --profiles-dir .
 dbt run --profiles-dir .
-dbt run --full-refresh --select fct_listing_calendar --profiles-dir .
 dbt test --profiles-dir .
 dbt docs generate --profiles-dir .
 dbt docs serve --profiles-dir .
+```
+
+## Refreshing New Dataset Snapshots
+
+When loading a new Inside Airbnb dataset snapshot, run:
+
+```powershell
+dbt run --full-refresh --select fct_listing_calendar+ --profiles-dir .
 ```
 
 Run the dashboard:
