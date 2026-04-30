@@ -85,10 +85,3 @@ Small note: in normal daily use, students can run:
 ```
 dbt run --profiles-dir .
 ```
-
-## Refreshing New Dataset Snapshots
-
-When loading a new Inside Airbnb dataset snapshot, run:
-```
-dbt run --full-refresh --select fct_listing_calendar --profiles-dir .
-```
