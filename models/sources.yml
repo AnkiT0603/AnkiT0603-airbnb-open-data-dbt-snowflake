@@ -1,0 +1,46 @@
+version: 2
+
+sources:
+  - name: airbnb_raw
+    description: Raw Inside Airbnb open dataset loaded into Snowflake.
+    database: "{{ target.database }}"
+    schema: RAW
+    tables:
+      - name: listings
+        description: Detailed listing data from Inside Airbnb `listings.csv.gz`.
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: host_id
+            tests:
+              - not_null
+
+      - name: calendar
+        description: Daily listing availability and price data from Inside Airbnb `calendar.csv.gz`.
+        columns:
+          - name: listing_id
+            tests:
+              - not_null
+          - name: date
+            tests:
+              - not_null
+
+      - name: reviews
+        description: Detailed review data from Inside Airbnb `reviews.csv.gz`.
+        columns:
+          - name: id
+            tests:
+              - not_null
+              - unique
+          - name: listing_id
+            tests:
+              - not_null
+
+      - name: neighbourhoods
+        description: Neighbourhood reference data from Inside Airbnb `neighbourhoods.csv`.
+        columns:
+          - name: neighbourhood
+            tests:
+              - not_null
