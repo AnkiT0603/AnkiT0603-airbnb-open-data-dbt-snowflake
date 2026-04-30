@@ -1,0 +1,84 @@
+version: 2
+
+models:
+  - name: dim_hosts
+    description: Host dimension derived from Inside Airbnb listings.
+    columns:
+      - name: host_id
+        tests:
+          - not_null
+          - unique
+
+  - name: dim_listings
+    description: Listing dimension enriched with host and review metrics.
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+          - unique
+      - name: host_id
+        tests:
+          - not_null
+      - name: room_type
+        tests:
+          - accepted_values:
+              values: ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room']
+      - name: nightly_price
+        tests:
+          - not_null
+
+  - name: fct_listing_calendar
+    description: Daily listing availability fact table from the Inside Airbnb calendar file.
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+      - name: calendar_date
+        tests:
+          - not_null
+      - name: daily_price
+        tests:
+          - not_null
+      - name: is_available
+        tests:
+          - not_null
+      - name: is_unavailable
+        tests:
+          - not_null
+
+  - name: fct_reviews
+    description: Review-level fact table.
+    columns:
+      - name: review_id
+        tests:
+          - not_null
+          - unique
+      - name: listing_id
+        tests:
+          - not_null
+
+  - name: agg_listing_monthly_performance
+    description: Monthly listing-level availability, price, and estimated revenue performance.
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+      - name: calendar_month
+        tests:
+          - not_null
+      - name: unavailable_rate
+        tests:
+          - not_null
+
+  - name: agg_neighbourhood_monthly_performance
+    description: Monthly neighbourhood-level availability, price, and estimated revenue performance.
+    columns:
+      - name: neighbourhood
+        tests:
+          - not_null
+      - name: calendar_month
+        tests:
+          - not_null
+      - name: unavailable_rate
+        tests:
+          - not_null
