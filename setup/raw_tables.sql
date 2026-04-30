@@ -26,3 +26,27 @@ create table if not exists AIRBNB_ANALYTICS.RAW.LISTINGS (
     calculated_host_listings_count string,
     last_scraped string
 );
+
+create table if not exists AIRBNB_ANALYTICS.RAW.CALENDAR (
+    listing_id number,
+    date string,
+    available string,
+    price string,
+    adjusted_price string,
+    minimum_nights string,
+    maximum_nights string
+);
+
+create table if not exists AIRBNB_ANALYTICS.RAW.REVIEWS (
+    listing_id number,
+    id number,
+    date string,
+    reviewer_id number,
+    reviewer_name string,
+    comments string
+);
+
+create table if not exists AIRBNB_ANALYTICS.RAW.NEIGHBOURHOODS (
+    neighbourhood_group string,
+    neighbourhood string
+);
