@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: stg_airbnb__listings
+    description: Cleaned Inside Airbnb listing records with host, location, property, price, and review attributes.
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+          - unique
+      - name: host_id
+        tests:
+          - not_null
+      - name: room_type
+        tests:
+          - accepted_values:
+              values: ['Entire home/apt', 'Private room', 'Shared room', 'Hotel room']
+      - name: nightly_price
+        tests:
+          - not_null
+
+  - name: stg_airbnb__calendar
+    description: Cleaned daily availability and price records from the Inside Airbnb calendar file.
+    columns:
+      - name: listing_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_airbnb__listings')
+              field: listing_id
+      - name: calendar_date
+        tests:
+          - not_null
+      - name: is_available
+        tests:
+          - not_null
+
+  - name: stg_airbnb__reviews
+    description: Cleaned review records with review date and reviewer identifiers.
+    columns:
+      - name: review_id
+        tests:
+          - not_null
+          - unique
+      - name: listing_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_airbnb__listings')
+              field: listing_id
+
+  - name: stg_airbnb__neighbourhoods
+    description: Cleaned neighbourhood reference records.
+    columns:
+      - name: neighbourhood
+        tests:
+          - not_null
