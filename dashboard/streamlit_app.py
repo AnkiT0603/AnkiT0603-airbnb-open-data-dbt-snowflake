@@ -95,7 +95,7 @@ filtered_neighbourhood = neighbourhood_df[
 ]
 filtered_listing = listing_df[listing_df["ROOM_TYPE"].isin(selected_room_types)]
 
-total_listings = int(neighbourhood_df["ACTIVE_LISTINGS"].max())
+total_listings = int(listing_df["LISTING_ID"].nunique())
 estimated_revenue = neighbourhood_df["ESTIMATED_UNAVAILABLE_REVENUE"].sum()
 avg_price = neighbourhood_df["AVERAGE_DAILY_PRICE"].mean()
 avg_unavailable_rate = neighbourhood_df["UNAVAILABLE_RATE"].mean()
