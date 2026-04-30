@@ -33,7 +33,6 @@ Inside Airbnb does not provide actual booking transactions. This project uses ca
 
 ## Classroom Documentation
 
-- `docs/INSTRUCTOR_GUIDE.md`: lesson plan, learning objectives, teaching flow, assignments, and rubric
 - `docs/STUDENT_GUIDE.md`: setup instructions, dbt commands, project overview, and exercises
 - `docs/SNOWFLAKE_SETUP.md`: Snowflake database, warehouse, profile, and environment setup
 - `docs/INSIDE_AIRBNB_DATASET.md`: dataset source, recommended files, and loading notes
