@@ -129,7 +129,7 @@ streamlit run dashboard/streamlit_app.py
 - `agg_listing_monthly_performance`: monthly listing availability, price, and estimated revenue metrics
 - `agg_neighbourhood_monthly_performance`: monthly neighbourhood performance metrics
 
-`fct_listing_calendar` is configured as an incremental model because the Inside Airbnb calendar table can be large.
+`fct_listing_calendar` is configured as an incremental Snowflake merge model. It supports upserts using `listing_id` and `calendar_date` as the unique key. For correctness with new Inside Airbnb snapshots, use the full-refresh command below because older calendar dates can change between dataset snapshots.
 
 When loading a new Inside Airbnb dataset snapshot, run:
 `dbt run --full-refresh --select fct_listing_calendar --profiles-dir .`
