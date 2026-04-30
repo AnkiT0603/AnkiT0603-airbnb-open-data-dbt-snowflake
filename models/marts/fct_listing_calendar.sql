@@ -24,10 +24,3 @@ select
     maximum_nights,
     estimated_unavailable_revenue
 from {{ ref('int_listing_daily_availability') }}
-
-{% if is_incremental() %}
-    where calendar_date >= (
-        select coalesce(dateadd(day, -7, max(calendar_date)), '1900-01-01'::date)
-        from {{ this }}
-    )
-{% endif %}
